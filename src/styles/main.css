@@ -1,0 +1,345 @@
+@charset "UTF-8";
+
+/* ============ 基础 ============ */
+* { box-sizing: border-box; }
+
+/* 全局缩放：改这一个值即可整体放大/缩小。
+   1 = 当前大小，0.9 缩小 10%，1.1 放大 10%，依此类推。 */
+:root { --scale: 0.70; }
+
+/* rem 基准：原版 Bootstrap 3 为 10px，整体调小到 8px。
+   font-size: 12px (em 基准)。两者都乘 --scale，实现一键缩放。 */
+html { font-size: calc(8px * var(--scale)); -webkit-tap-highlight-color: transparent; }
+body {
+  margin: 0;
+  font-size: calc(12px * var(--scale));
+  line-height: 1.8;
+  font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+  color: #333;
+  background: #fff;
+}
+a { color: #080; }
+a:hover { color: #0a0; }
+h1 {
+  margin: 4rem 0;
+  font-size: 5rem;
+  font-family: 'Roboto Condensed', sans-serif;
+  letter-spacing: -1px;
+  font-weight: 700;
+}
+
+/* ============ 简化栅格 ============ */
+.container { width: 100%; max-width: 1170px; margin: 0 auto; padding: 0 15px; }
+.row { display: flex; flex-wrap: wrap; margin: 0 -15px; }
+.col-sm-6, .col-sm-7 { flex: 0 0 auto; padding: 0 15px; width: 100%; }
+.col-sm-6 { flex: 0 0 50%; }
+.col-sm-7 { flex: 0 0 58.3333%; }
+.text-nowrap { white-space: nowrap; }
+.text-muted { color: #777; }
+small { font-size: 85%; }
+
+/* ============ panel (Bootstrap3 还原) ============ */
+.panel {
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  background: #fff;
+}
+.panel-primary { border-color: #337ab7; }
+.panel-heading {
+  padding: 0.67em 1em;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel-primary > .panel-heading {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+.panel-body { padding: 1em; }
+.panel-title {
+  margin: 0;
+  font-size: 1.17em;
+  color: inherit;
+}
+
+/* ============ btn (Bootstrap3 还原) ============ */
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 0.33em 0.83em;
+  font-size: 1em;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-image: none;
+}
+.btn:disabled { cursor: not-allowed; opacity: .65; }
+.btn-default { color: #333; background-color: #fff; border-color: #ccc; }
+.btn-primary { color: #fff; background-color: #337ab7; border-color: #2e6da4; }
+.btn-group { display: inline-block; vertical-align: middle; }
+.btn-group .btn { position: relative; }
+.btn-group .btn + .btn { margin-left: -1px; }
+.btn-group .btn:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.btn-group .btn:first-child { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+
+/* ============ form (Bootstrap3 还原) ============ */
+.form-control {
+  display: block;
+  height: 2.33em;
+  padding: 0.33em 0.83em;
+  font-size: 1em;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.form-inline .form-control { display: inline-block; width: auto; vertical-align: middle; }
+.form-inline .form-group { display: inline-block; margin-bottom: 0; vertical-align: middle; }
+.form-group { margin-bottom: 0.83em; }
+.input-group { display: inline-table; vertical-align: middle; }
+.input-group-addon {
+  display: table-cell;
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0.33em 0.83em;
+  font-size: 1em;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 0 4px 4px 0;
+}
+.input-group .form-control { display: table-cell; border-radius: 4px 0 0 4px; }
+.checkbox label { display: inline-block; cursor: pointer; }
+
+/* ============ nav-tabs (Bootstrap3 还原) ============ */
+.nav { margin: 0; padding: 0; list-style: none; }
+.nav-tabs { border-bottom: 1px solid #ddd; }
+.nav-tabs > li { position: relative; display: block; float: left; margin-bottom: -1px; }
+.nav-tabs > li > a {
+  position: relative;
+  display: block;
+  margin-right: 2px;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: #337ab7;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+}
+
+/* ============ 文件打开界面 ============ */
+#file-open-ui { padding: 0.83em; }
+#dropzone {
+  min-height: 26rem;
+  border: 1px dashed transparent;
+  background-color: #fff;
+  padding: 0.83em;
+}
+#dropzone input[type=file] { display: block; width: 100%; margin-bottom: 0.67em; }
+#dropzone.psdtool-drop-active { border: 1px dashed #4bf; background-color: #def; }
+#additional-options { margin-top: 8rem; }
+#additional-options dt { margin-top: 1em; margin-bottom: 0.5em; }
+#additional-options dd { padding-left: 2em; }
+
+/* ============ 主界面 split-pane ============ */
+.split-pane {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+#side-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--split, 29vw);
+  min-width: 32px;
+  height: 100vh;
+  overflow: auto;
+  background: #fff;
+  border-right: 1px solid #888;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+#side-head { flex: 0 0 auto; }
+#side-body { overflow: auto; flex: 1 1 auto; }
+#side-tab {
+  background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+  border-bottom: 1px solid #ddd;
+}
+#side-tab > li:first-child { margin-left: 8px; }
+#side-tab > li > a {
+  font-size: 0.8em;
+  padding: 4px 12px;
+  margin-top: 8px;
+  user-select: none;
+  outline: 0;
+}
+#side-tab > li.active > a {
+  box-shadow: 1px -1px 2px #ddd;
+  border-top: 2px solid #9bf;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  cursor: default;
+}
+.tab-content { position: relative; }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+#splitter {
+  position: absolute;
+  left: var(--split, 29vw);
+  top: 0;
+  width: 4px;
+  height: 100vh;
+  background: #aaa;
+  cursor: col-resize;
+  z-index: 10;
+}
+#main-container {
+  position: absolute;
+  left: var(--split, 29vw);
+  top: 0;
+  right: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============ 工具条 ============ */
+#misc-ui {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  border-bottom: #bbb 1px solid;
+}
+#misc-ui .form-inline { padding: 4px 8px; }
+#misc-ui .psdtool-ui-item { padding: 8px 0.6em; }
+/* 工具条控件统一字号，与翻转按钮一致高度 */
+#misc-ui .btn,
+#misc-ui .form-control,
+#misc-ui .input-group-addon { font-size: 1.5em; }
+.form-inline .psdtool-scale-row { display: inline-flex !important; align-items: center; gap: 0.4em; }
+.psdtool-flip-buttons { display: inline-block; }
+.psdtool-flip-buttons input[type=checkbox] { margin-right: 2px; }
+#fixed-side { width: auto; padding: 0.33em 0.5em; }
+#max-pixels { width: 5rem; padding: 0.33em 0.5em; }
+#seq-dl-prefix { width: 14rem; padding: 0.33em 0.5em; }
+#seq-dl-num { width: 10rem; padding: 0.33em 0.5em; }
+
+/* ============ 预览区 ============ */
+#preview-container {
+  flex: 1 1 auto;
+  overflow: auto;
+  padding: 0;
+  margin: 0;
+}
+#preview-background {
+  margin: auto;
+  display: block;
+  position: relative;
+  box-sizing: content-box;
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #ddd 25%, transparent 25%),
+    linear-gradient(-45deg, #ddd 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ddd 75%),
+    linear-gradient(-45deg, transparent 75%, #ddd 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  border: 1px solid #888;
+}
+#preview { margin: auto; display: block; }
+
+/* ============ 图层树 ============ */
+#layer-tree {
+  padding: 8px 0 0 0;
+  margin: 0;
+  list-style-type: none;
+}
+#layer-tree ul {
+  padding: 0 0 0 16px;
+  margin: 0;
+  list-style-type: none;
+}
+#layer-tree li { list-style-type: none; }
+.psdtool-layer-name {
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  margin-bottom: -1px;
+}
+.psdtool-layer-name label {
+  margin: 0;
+  display: block;
+  padding: 4px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.psdtool-layer-name input {
+  margin: 0 0.5rem 0 0;
+  vertical-align: middle;
+}
+.psdtool-icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+.psdtool-folder-icon::before { content: '\25B8'; color: #888; }
+.psdtool-clipped-mark {
+  display: inline-block;
+  height: 1rem;
+  margin: 0 0.5rem 0 0.25rem;
+  vertical-align: middle;
+  color: #888;
+  font-size: 0.8em;
+}
+.psdtool-folder > ul { transition: opacity 0.25s; opacity: 1; }
+.psdtool-folder.psdtool-hidden > ul,
+.psdtool-hidden-by-clipping > .psdtool-layer-name > label {
+  opacity: 0.25;
+}
+.psdtool-thumbnail {
+  border: 1px solid #ddd;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5rem;
+}
+
+/* 翻转标记配对层显隐 */
+.psdtool-item-flip-x,
+.psdtool-item-flip-y,
+.psdtool-item-flip-xy,
+.psdtool-flip-x .psdtool-item-flip-x-orig,
+.psdtool-flip-y .psdtool-item-flip-y-orig,
+.psdtool-flip-xy .psdtool-item-flip-xy-orig {
+  display: none;
+}
+.psdtool-flip-x .psdtool-item-flip-x,
+.psdtool-flip-y .psdtool-item-flip-y,
+.psdtool-flip-xy .psdtool-item-flip-xy {
+  display: block;
+}
+
+/* ============ 通用 ============ */
+label { user-select: none; font-weight: normal; }
+.psdtool-hidden { /* checkbox 未选层 */ }
