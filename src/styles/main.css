@@ -242,7 +242,7 @@ small { font-size: 85%; }
 .psdtool-flip-buttons { display: inline-block; }
 .psdtool-flip-buttons input[type=checkbox] { margin-right: 2px; }
 #fixed-side { width: auto; padding: 0.33em 0.5em; }
-#max-pixels { width: 5rem; padding: 0.33em 0.5em; }
+#max-pixels { width: 8rem; padding: 0.33em 0.5em; }
 #seq-dl-prefix { width: 14rem; padding: 0.33em 0.5em; }
 #seq-dl-num { width: 10rem; padding: 0.33em 0.5em; }
 
