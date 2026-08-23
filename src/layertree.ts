@@ -127,6 +127,13 @@ export class LayerTree {
         }
         cn.li.appendChild(elems.div);
         cn.li.appendChild(cul);
+        if (elems.toggle) {
+          elems.toggle.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            ev.stopPropagation();
+            cn.li.classList.toggle('psdtool-collapsed');
+          });
+        }
         ul.appendChild(cn.li);
       }
     };
@@ -193,9 +200,11 @@ export class LayerTree {
     text: Text;
     div: HTMLDivElement;
     input: HTMLInputElement;
+    toggle?: HTMLSpanElement;
   } {
     const label = document.createElement('label');
     const input = document.createElement('input');
+    let toggle: HTMLSpanElement | undefined;
     let layerName = l.Name;
     // Generally '!?' does not expect any extended features.
     if (!this.disableExtendedFeature && layerName.length > 1 && layerName !== '!?') {
@@ -272,11 +281,18 @@ export class LayerTree {
 
     const div = document.createElement('div');
     div.className = 'psdtool-layer-name';
+    if (l.Folder) {
+      toggle = document.createElement('span');
+      toggle.className = 'psdtool-fold-toggle';
+      toggle.title = '折叠 / 展开';
+      div.appendChild(toggle);
+    }
     div.appendChild(label);
     return {
       text: text,
       div: div,
       input: input,
+      toggle: toggle,
     };
   }
 

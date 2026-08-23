@@ -286,6 +286,8 @@ small { font-size: 85%; }
   background: #f8f8f8;
   border: 1px solid #ddd;
   margin-bottom: -1px;
+  display: flex;
+  align-items: center;
 }
 .psdtool-layer-name label {
   margin: 0;
@@ -293,6 +295,8 @@ small { font-size: 85%; }
   padding: 4px;
   white-space: nowrap;
   cursor: pointer;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 .psdtool-layer-name input {
   margin: 0 0.5rem 0 0;
@@ -303,7 +307,50 @@ small { font-size: 85%; }
   margin-right: 0.5rem;
   vertical-align: middle;
 }
-.psdtool-folder-icon::before { content: '\25B8'; color: #888; }
+.psdtool-folder-icon {
+  position: relative;
+  width: 15px;
+  height: 12px;
+  flex: 0 0 auto;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+/* CSS 画的简约文件夹：标签 + 主体 */
+.psdtool-folder-icon::before,
+.psdtool-folder-icon::after {
+  content: '';
+  position: absolute;
+  display: block;
+}
+.psdtool-folder-icon::before {
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 3px;
+  background: #888;
+  border-radius: 1px 1px 0 0;
+}
+.psdtool-folder-icon::after {
+  left: 0;
+  top: 2px;
+  width: 15px;
+  height: 10px;
+  background: #bbb;
+  border-radius: 0 2px 2px 2px;
+}
+.psdtool-fold-toggle {
+  flex: 0 0 auto;
+  display: inline-block;
+  margin: 0 0.5rem 0 0;
+  padding: 0 0.4rem;
+  cursor: pointer;
+  user-select: none;
+  color: #888;
+  transition: transform 0.15s;
+}
+.psdtool-fold-toggle::before { content: '\25BE'; }
+.psdtool-folder.psdtool-collapsed > ul { display: none; }
+.psdtool-folder.psdtool-collapsed .psdtool-fold-toggle::before { content: '\25B8'; }
 .psdtool-clipped-mark {
   display: inline-block;
   height: 1rem;
