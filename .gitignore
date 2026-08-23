@@ -28,7 +28,6 @@ yarn-error.log*
 
 # Test files
 *.psd
-*.png
 !testdata/*.psd
 !testdata/*.png
 
@@ -36,3 +35,4 @@ yarn-error.log*
 .env
 .env.local
 
+*.py

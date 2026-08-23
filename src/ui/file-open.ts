@@ -19,10 +19,20 @@ export function createFileOpenUI(onOpen: (r: FileOpenResult) => void): HTMLEleme
   headerCol.appendChild(h1);
   headerRow.appendChild(headerCol);
 
-  // 语言切换
+  // 语言切换（右侧）
   const langCol = el('div', 'col-sm-5 text-right');
   langCol.style.paddingTop = '1.2rem';
   const langGroup = el('div', 'btn-group btn-group-sm');
+
+  // 调音参考入口
+  const yukkuri = document.createElement('a');
+  yukkuri.href = '/调音参考.html';
+  yukkuri.className = 'btn btn-primary btn-sm';
+  yukkuri.textContent = '油库里调音';
+  yukkuri.title = '油库里调音参考';
+  yukkuri.style.marginRight = '8px';
+  yukkuri.style.verticalAlign = 'middle';
+  langCol.appendChild(yukkuri);
   for (const l of allLangs) {
     const btn = document.createElement('button') as HTMLButtonElement;
     btn.type = 'button';

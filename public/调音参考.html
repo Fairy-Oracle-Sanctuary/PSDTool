@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>油库里调音参考</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 24px 20px 60px;
+    background: #f5f6f8; color: #1f2328;
+    font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+  }
+  header { max-width: 980px; margin: 0 auto 20px; }
+  h1 { font-size: 20px; margin: 0 0 4px; font-weight: 600; }
+  .sub { color: #6a737d; font-size: 13px; margin-bottom: 18px; }
+  .controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .controls input[type=text] {
+    padding: 8px 12px; border: 1px solid #d0d7de; border-radius: 6px;
+    font-size: 14px; width: 220px; outline: none; background: #fff;
+  }
+  .controls input[type=text]:focus { border-color: #0969da; box-shadow: 0 0 0 3px rgba(9,105,218,.15); }
+  .controls .btn {
+    padding: 8px 14px; border: 1px solid #d0d7de; background: #fff; border-radius: 6px;
+    cursor: pointer; font-size: 13px; color: #1f2328;
+  }
+  .controls .btn:hover { background: #f3f4f6; }
+  .controls .btn.on { background: #0969da; border-color: #0969da; color: #fff; }
+  .stat { margin-left: auto; font-size: 13px; color: #6a737d; }
+
+  .group-title {
+    max-width: 980px; margin: 26px auto 10px; font-size: 15px; font-weight: 600; color: #333;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .group-title .cnt { color: #999; font-weight: 400; font-size: 13px; }
+
+  .grid {
+    max-width: 980px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(176px, 1fr)); gap: 12px;
+  }
+  .card {
+    background: #fff; border: 1px solid #eaeef2; border-radius: 10px; overflow: hidden;
+    transition: box-shadow .15s, transform .15s;
+  }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,.08); transform: translateY(-2px); }
+  .thumb {
+    aspect-ratio: 5/4; background:
+      repeating-conic-gradient(#f0f0f0 0% .25turn, #fff 0% .5turn)
+      0 0 / 16px 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .thumb img { width: 100%; height: 100%; object-fit: contain; image-rendering: auto; }
+  .thumb .noimg { color: #b0b8c4; font-size: 12px; }
+  .info { padding: 10px 12px 12px; }
+  .cn { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+  .jp { font-size: 12px; color: #8a939c; margin-bottom: 8px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; color: #555; }
+  .meta b { font-weight: 600; color: #333; font-variant-numeric: tabular-nums; }
+  .voice { display: inline-block; padding: 0 7px; border-radius: 999px; color: #fff; font-size: 11px; line-height: 18px; }
+  .v-女性１ { background: #e891a0; }
+  .v-女性２ { background: #d46a88; }
+  .v-中性   { background: #8f7dc4; }
+  .v-男性１ { background: #5a8fd6; }
+  .v-機械１ { background: #7d9aa8; }
+  .empty { max-width: 980px; margin: 30px auto; color: #999; text-align: center; padding: 40px 0; }
+  @media (max-width: 560px) {
+    .controls input[type=text] { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>油库里调音参考</h1>
+  <div class="sub">东方 Project 角色 · 声质 / 音程 / 速度 · 素材合成图预览</div>
+  <div class="controls">
+    <input type="text" id="search" placeholder="搜索角色…">
+    <button class="btn on" id="btnGroup">按声质分组</button>
+    <button class="btn" id="btnFlat">平铺列表</button>
+    <span class="stat" id="stat"></span>
+  </div>
+</header>
+
+<div id="content"></div>
+
+<script>
+const GROUP_ORDER = ["女性１","女性２","中性","男性１","機械１"];
+
+let VOICES_ORDER, mode = "group";
+
+async function load(){
+  const res = await fetch("yukkuri/data.json");
+  return await res.json();
+}
+
+function vclass(v){ return "v-" + v; }
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+function card(d){
+  let img = d.img
+    ? `<img src="yukkuri/${esc(d.img)}" alt="${esc(d.cn)}" loading="lazy">`
+    : `<span class="noimg">无素材</span>`;
+  return `<div class="card">
+    <div class="thumb">${img}</div>
+    <div class="info">
+      <div class="cn">${esc(d.cn)}</div>
+      <div class="jp">${esc(d.jp)}</div>
+      <div class="voice ${vclass(d.voice)}">${esc(d.voice)}</div>
+      <div class="meta" style="margin-top:6px">
+        <span>音程 <b>${d.pitch}</b></span>
+        <span>速度 <b>${d.speed}</b></span>
+      </div>
+    </div>
+  </div>`;
+}
+
+function render(data, q){
+  const rows = data.filter(d =>
+    !q || d.cn.toLowerCase().includes(q) || d.jp.toLowerCase().includes(q) || d.voice.includes(q));
+  document.getElementById("stat").textContent = `共 ${data.length} 个角色 · 显示 ${rows.length}`;
+  const box = document.getElementById("content");
+  let html = "";
+  if (!rows.length) { box.innerHTML = `<div class="empty">没有匹配的角色</div>`; return; }
+  if (mode === "group") {
+    for (const g of GROUP_ORDER) {
+      const grp = rows.filter(d => d.voice === g);
+      if (!grp.length) continue;
+      html += `<div class="group-title">${esc(g)} <span class="cnt">${grp.length}</span></div>`;
+      html += `<div class="grid">` + grp.map(card).join("") + `</div>`;
+    }
+    const rest = rows.filter(d => !GROUP_ORDER.includes(d.voice));
+    if (rest.length) {
+      html += `<div class="group-title">其它 <span class="cnt">${rest.length}</span></div>`;
+      html += `<div class="grid">` + rest.map(card).join("") + `</div>`;
+    }
+  } else {
+    html = `<div class="grid">` + rows.map(card).join("") + `</div>`;
+  }
+  box.innerHTML = html;
+}
+
+(async function(){
+  const data = await load();
+  window.addEventListener("input", e => {
+    if (e.target.id === "search") render(data, e.target.value.trim().toLowerCase());
+  });
+  document.getElementById("btnGroup").onclick = () => {
+    mode = "group";
+    document.getElementById("btnGroup").classList.add("on");
+    document.getElementById("btnFlat").classList.remove("on");
+    render(data, document.getElementById("search").value.trim().toLowerCase());
+  };
+  document.getElementById("btnFlat").onclick = () => {
+    mode = "flat";
+    document.getElementById("btnFlat").classList.add("on");
+    document.getElementById("btnGroup").classList.remove("on");
+    render(data, document.getElementById("search").value.trim().toLowerCase());
+  };
+  render(data, "");
+})().catch(e => {
+  document.getElementById("content").innerHTML =
+    `<div class="empty">数据加载失败：${esc(e.message)}<br>请先在项目目录运行 <code>python _gen_yukkuri.py</code> 生成 data.json 与配图。</div>`;
+});
+</script>
+</body>
+</html>
