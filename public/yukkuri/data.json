@@ -1,0 +1,346 @@
+[
+ {
+  "jp": "れいむ",
+  "cn": "博丽灵梦",
+  "voice": "女性１",
+  "pitch": 100,
+  "speed": 100,
+  "img": "img/char01.png"
+ },
+ {
+  "jp": "ありす",
+  "cn": "爱丽丝",
+  "voice": "女性１",
+  "pitch": 130,
+  "speed": 110,
+  "img": "img/char02.png"
+ },
+ {
+  "jp": "いちりん",
+  "cn": "云居一轮",
+  "voice": "女性２",
+  "pitch": 145,
+  "speed": 65,
+  "img": "img/char03.png"
+ },
+ {
+  "jp": "うどんげ",
+  "cn": "铃仙·优昙华院·因幡",
+  "voice": "女性１",
+  "pitch": 120,
+  "speed": 80,
+  "img": "img/char04.png"
+ },
+ {
+  "jp": "えいき",
+  "cn": "四季映姬",
+  "voice": "女性２",
+  "pitch": 117,
+  "speed": 87,
+  "img": "img/char05.png"
+ },
+ {
+  "jp": "おくう",
+  "cn": "灵乌路空",
+  "voice": "中性",
+  "pitch": 170,
+  "speed": 80,
+  "img": "img/char06.png"
+ },
+ {
+  "jp": "かぐや",
+  "cn": "蓬莱山辉夜",
+  "voice": "女性１",
+  "pitch": 120,
+  "speed": 100,
+  "img": "img/char07.png"
+ },
+ {
+  "jp": "かなこ",
+  "cn": "八坂神奈子",
+  "voice": "女性１",
+  "pitch": 90,
+  "speed": 115,
+  "img": "img/char08.png"
+ },
+ {
+  "jp": "きめぇまる",
+  "cn": "恶心丸",
+  "voice": "男性１",
+  "pitch": 140,
+  "speed": 80,
+  "img": "img/char09.png"
+ },
+ {
+  "jp": "こいし",
+  "cn": "古明地恋",
+  "voice": "女性２",
+  "pitch": 181,
+  "speed": 50,
+  "img": "img/char10.png"
+ },
+ {
+  "jp": "こがさ",
+  "cn": "多多良小伞",
+  "voice": "中性",
+  "pitch": 130,
+  "speed": 110,
+  "img": "img/char11.png"
+ },
+ {
+  "jp": "こーりん",
+  "cn": "森近霖之助",
+  "voice": "男性１",
+  "pitch": 105,
+  "speed": 100,
+  "img": "img/char12.png"
+ },
+ {
+  "jp": "さくや",
+  "cn": "十六夜咲夜",
+  "voice": "女性１",
+  "pitch": 125,
+  "speed": 105,
+  "img": "img/char13.png"
+ },
+ {
+  "jp": "さとり",
+  "cn": "古明地觉",
+  "voice": "機械１",
+  "pitch": 125,
+  "speed": 115,
+  "img": "img/char14.png"
+ },
+ {
+  "jp": "さなえ",
+  "cn": "东风谷早苗",
+  "voice": "女性１",
+  "pitch": 95,
+  "speed": 130,
+  "img": "img/char15.png"
+ },
+ {
+  "jp": "さにーみるく",
+  "cn": "桑尼米尔克",
+  "voice": "機械１",
+  "pitch": 120,
+  "speed": 125,
+  "img": "img/char16.png"
+ },
+ {
+  "jp": "しゃめいまる",
+  "cn": "射命丸文",
+  "voice": "女性２",
+  "pitch": 125,
+  "speed": 100,
+  "img": "img/char17.png"
+ },
+ {
+  "jp": "すいか",
+  "cn": "伊吹萃香",
+  "voice": "中性",
+  "pitch": 150,
+  "speed": 100,
+  "img": "img/char18.png"
+ },
+ {
+  "jp": "すわこ",
+  "cn": "洩矢诹访子",
+  "voice": "女性１",
+  "pitch": 175,
+  "speed": 80,
+  "img": "img/char19.png"
+ },
+ {
+  "jp": "ちるの",
+  "cn": "琪露诺",
+  "voice": "女性２",
+  "pitch": 120,
+  "speed": 115,
+  "img": "img/char20.png"
+ },
+ {
+  "jp": "てゐ",
+  "cn": "因幡天为",
+  "voice": "中性",
+  "pitch": 120,
+  "speed": 110,
+  "img": "img/char21.png"
+ },
+ {
+  "jp": "てんこ",
+  "cn": "比那名居天子",
+  "voice": "女性２",
+  "pitch": 134,
+  "speed": 75,
+  "img": "img/char22.png"
+ },
+ {
+  "jp": "とらまる",
+  "cn": "寅丸星",
+  "voice": "女性２",
+  "pitch": 110,
+  "speed": 120,
+  "img": "img/char23.png"
+ },
+ {
+  "jp": "なずーりん",
+  "cn": "娜兹玲",
+  "voice": "女性１",
+  "pitch": 115,
+  "speed": 90,
+  "img": "img/char24.png"
+ },
+ {
+  "jp": "にとり",
+  "cn": "河城荷取",
+  "voice": "機械１",
+  "pitch": 105,
+  "speed": 105,
+  "img": "img/char25.png"
+ },
+ {
+  "jp": "ぬえ",
+  "cn": "封兽鵺",
+  "voice": "女性２",
+  "pitch": 180,
+  "speed": 100,
+  "img": "img/char26.png"
+ },
+ {
+  "jp": "はたて",
+  "cn": "姬海棠果",
+  "voice": "女性２",
+  "pitch": 121,
+  "speed": 84,
+  "img": "img/char27.png"
+ },
+ {
+  "jp": "ぱちゅりー",
+  "cn": "帕秋莉·诺蕾姬",
+  "voice": "女性２",
+  "pitch": 115,
+  "speed": 120,
+  "img": "img/char28.png"
+ },
+ {
+  "jp": "ぱるすぃ",
+  "cn": "水桥帕露西",
+  "voice": "女性２",
+  "pitch": 130,
+  "speed": 80,
+  "img": "img/char29.png"
+ },
+ {
+  "jp": "ひじり",
+  "cn": "圣白莲",
+  "voice": "中性",
+  "pitch": 97,
+  "speed": 102,
+  "img": "img/char30.png"
+ },
+ {
+  "jp": "ふらん",
+  "cn": "芙兰朵露·斯卡蕾特",
+  "voice": "機械１",
+  "pitch": 100,
+  "speed": 100,
+  "img": "img/char31.png"
+ },
+ {
+  "jp": "まりさ",
+  "cn": "雾雨魔理沙",
+  "voice": "女性２",
+  "pitch": 100,
+  "speed": 100,
+  "img": "img/char32.png"
+ },
+ {
+  "jp": "みすちー",
+  "cn": "米斯蒂娅·萝蕾拉",
+  "voice": "女性１",
+  "pitch": 105,
+  "speed": 100,
+  "img": "img/char33.png"
+ },
+ {
+  "jp": "みすちー２",
+  "cn": "米斯蒂娅·萝蕾拉(２)",
+  "voice": "女性１",
+  "pitch": 105,
+  "speed": 100,
+  "img": "img/char34.png"
+ },
+ {
+  "jp": "もこう",
+  "cn": "藤原妹红",
+  "voice": "女性２",
+  "pitch": 120,
+  "speed": 100,
+  "img": "img/char35.png"
+ },
+ {
+  "jp": "もみじ",
+  "cn": "犬走椛",
+  "voice": "女性１",
+  "pitch": 110,
+  "speed": 120,
+  "img": "img/char36.png"
+ },
+ {
+  "jp": "やまめ",
+  "cn": "黑谷山女",
+  "voice": "女性２",
+  "pitch": 115,
+  "speed": 110,
+  "img": "img/char37.png"
+ },
+ {
+  "jp": "ようむ",
+  "cn": "魂魄妖梦",
+  "voice": "女性２",
+  "pitch": 120,
+  "speed": 115,
+  "img": "img/char38.png"
+ },
+ {
+  "jp": "りぐる",
+  "cn": "莉格露·奈特巴格",
+  "voice": "男性１",
+  "pitch": 140,
+  "speed": 110,
+  "img": "img/char39.png"
+ },
+ {
+  "jp": "りりーほわいと",
+  "cn": "莉莉霍瓦特",
+  "voice": "女性１",
+  "pitch": 115,
+  "speed": 110,
+  "img": "img/char40.png"
+ },
+ {
+  "jp": "りりか",
+  "cn": "莉莉卡·普莉兹姆利巴",
+  "voice": "女性１",
+  "pitch": 135,
+  "speed": 95,
+  "img": "img/char41.png"
+ },
+ {
+  "jp": "るなちゃいるど",
+  "cn": "露娜切露德",
+  "voice": "女性２",
+  "pitch": 125,
+  "speed": 120,
+  "img": "img/char42.png"
+ },
+ {
+  "jp": "れみりあ",
+  "cn": "蕾米莉亚·斯卡蕾特",
+  "voice": "女性１",
+  "pitch": 150,
+  "speed": 80,
+  "img": "img/char43.png"
+ }
+]
