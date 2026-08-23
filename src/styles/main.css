@@ -259,14 +259,18 @@ small { font-size: 85%; }
   position: relative;
   box-sizing: content-box;
   background-color: #fff;
-  background-image:
-    linear-gradient(45deg, #ddd 25%, transparent 25%),
+  background-image: linear-gradient(45deg, #ddd 25%, transparent 25%),
     linear-gradient(-45deg, #ddd 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, #ddd 75%),
     linear-gradient(-45deg, transparent 75%, #ddd 75%);
   background-size: 16px 16px;
   background-position: 0 0, 0 8px, 8px -8px, -8px 0;
   border: 1px solid #888;
+  animation: psdtool-grid-move 1.6s linear infinite;
+}
+@keyframes psdtool-grid-move {
+  from { background-position: 0 0, 0 8px, 8px -8px, -8px 0; }
+  to   { background-position: 8px 8px, 8px 16px, 16px 0, 0 8px; }
 }
 #preview { margin: auto; display: block; }
 
