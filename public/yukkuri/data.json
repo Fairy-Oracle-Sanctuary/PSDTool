@@ -1,19 +1,27 @@
 [
  {
-  "jp": "れいむ",
-  "cn": "博丽灵梦",
-  "voice": "女性１",
-  "pitch": 100,
-  "speed": 100,
-  "img": "img/char01.png"
+  "jp": "あうん",
+  "cn": "高丽野阿吽",
+  "voice": "",
+  "pitch": 140,
+  "speed": 83,
+  "img": null
  },
  {
   "jp": "ありす",
   "cn": "爱丽丝",
   "voice": "女性１",
   "pitch": 130,
-  "speed": 110,
+  "speed": 90,
   "img": "img/char02.png"
+ },
+ {
+  "jp": "いいずなまる",
+  "cn": "饭纲丸龙",
+  "voice": "女性２",
+  "pitch": 116,
+  "speed": 93,
+  "img": null
  },
  {
   "jp": "いちりん",
@@ -21,7 +29,7 @@
   "voice": "女性２",
   "pitch": 145,
   "speed": 65,
-  "img": "img/char03.png"
+  "img": "img/char04.png"
  },
  {
   "jp": "うどんげ",
@@ -29,7 +37,15 @@
   "voice": "女性１",
   "pitch": 120,
   "speed": 80,
-  "img": "img/char04.png"
+  "img": "img/char05.png"
+ },
+ {
+  "jp": "うしざき",
+  "cn": "牛崎润美",
+  "voice": "女性２",
+  "pitch": 120,
+  "speed": 110,
+  "img": null
  },
  {
   "jp": "えいき",
@@ -37,7 +53,31 @@
   "voice": "女性２",
   "pitch": 117,
   "speed": 87,
-  "img": "img/char05.png"
+  "img": "img/char07.png"
+ },
+ {
+  "jp": "えいか",
+  "cn": "戎璎花",
+  "voice": "女性１",
+  "pitch": 160,
+  "speed": 90,
+  "img": null
+ },
+ {
+  "jp": "えーのこ",
+  "cn": "三头慧之子",
+  "voice": "女性２",
+  "pitch": 140,
+  "speed": 85,
+  "img": null
+ },
+ {
+  "jp": "えーりん",
+  "cn": "八意永琳",
+  "voice": "中性",
+  "pitch": 130,
+  "speed": 90,
+  "img": "img/char10.png"
  },
  {
   "jp": "おくう",
@@ -45,7 +85,15 @@
   "voice": "中性",
   "pitch": 170,
   "speed": 80,
-  "img": "img/char06.png"
+  "img": "img/char11.png"
+ },
+ {
+  "jp": "おりん",
+  "cn": "火焰猫燐",
+  "voice": "女性２",
+  "pitch": 125,
+  "speed": 100,
+  "img": "img/char12.png"
  },
  {
   "jp": "かぐや",
@@ -53,7 +101,15 @@
   "voice": "女性１",
   "pitch": 120,
   "speed": 100,
-  "img": "img/char07.png"
+  "img": "img/char13.png"
+ },
+ {
+  "jp": "かせん",
+  "cn": "茨木华扇",
+  "voice": "女性１",
+  "pitch": 140,
+  "speed": 100,
+  "img": "img/char14.png"
  },
  {
   "jp": "かなこ",
@@ -61,7 +117,7 @@
   "voice": "女性１",
   "pitch": 90,
   "speed": 115,
-  "img": "img/char08.png"
+  "img": "img/char15.png"
  },
  {
   "jp": "きめぇまる",
@@ -69,15 +125,55 @@
   "voice": "男性１",
   "pitch": 140,
   "speed": 80,
-  "img": "img/char09.png"
+  "img": "img/char16.png"
+ },
+ {
+  "jp": "くだまき",
+  "cn": "菅牧典",
+  "voice": "女性１",
+  "pitch": 130,
+  "speed": 90,
+  "img": null
+ },
+ {
+  "jp": "くたか",
+  "cn": "庭渡久侘歌",
+  "voice": "女性１",
+  "pitch": 160,
+  "speed": 90,
+  "img": null
+ },
+ {
+  "jp": "けいき",
+  "cn": "埴安神袿姬",
+  "voice": "中性",
+  "pitch": 140,
+  "speed": 110,
+  "img": null
+ },
+ {
+  "jp": "けーね",
+  "cn": "上白泽慧音",
+  "voice": "女性２",
+  "pitch": 122,
+  "speed": 95,
+  "img": "img/char20.png"
+ },
+ {
+  "jp": "こあくま",
+  "cn": "小恶魔",
+  "voice": "女性１",
+  "pitch": 170,
+  "speed": 65,
+  "img": "img/char21.png"
  },
  {
   "jp": "こいし",
   "cn": "古明地恋",
   "voice": "女性２",
   "pitch": 181,
-  "speed": 50,
-  "img": "img/char10.png"
+  "speed": 65,
+  "img": "img/char22.png"
  },
  {
   "jp": "こがさ",
@@ -85,7 +181,15 @@
   "voice": "中性",
   "pitch": 130,
   "speed": 110,
-  "img": "img/char11.png"
+  "img": "img/char23.png"
+ },
+ {
+  "jp": "こころ",
+  "cn": "秦心",
+  "voice": "女性１",
+  "pitch": 130,
+  "speed": 70,
+  "img": "img/char24.png"
  },
  {
   "jp": "こーりん",
@@ -93,7 +197,23 @@
   "voice": "男性１",
   "pitch": 105,
   "speed": 100,
-  "img": "img/char12.png"
+  "img": "img/char25.png"
+ },
+ {
+  "jp": "こまくさ",
+  "cn": "驹草山如",
+  "voice": "女性２",
+  "pitch": 110,
+  "speed": 110,
+  "img": null
+ },
+ {
+  "jp": "さき",
+  "cn": "骊驹早鬼",
+  "voice": "中性",
+  "pitch": 180,
+  "speed": 70,
+  "img": null
  },
  {
   "jp": "さくや",
@@ -101,39 +221,79 @@
   "voice": "女性１",
   "pitch": 125,
   "speed": 105,
-  "img": "img/char13.png"
+  "img": "img/char28.png"
  },
  {
   "jp": "さとり",
   "cn": "古明地觉",
-  "voice": "機械１",
-  "pitch": 125,
-  "speed": 115,
-  "img": "img/char14.png"
+  "voice": "女性１",
+  "pitch": 136,
+  "speed": 87,
+  "img": "img/char29.png"
  },
  {
   "jp": "さなえ",
   "cn": "东风谷早苗",
-  "voice": "女性１",
-  "pitch": 95,
-  "speed": 130,
-  "img": "img/char15.png"
+  "voice": "女性２",
+  "pitch": 135,
+  "speed": 85,
+  "img": "img/char30.png"
  },
  {
   "jp": "さにーみるく",
   "cn": "桑尼米尔克",
-  "voice": "機械１",
-  "pitch": 120,
-  "speed": 125,
-  "img": "img/char16.png"
+  "voice": "女性１",
+  "pitch": 170,
+  "speed": 70,
+  "img": "img/char31.png"
+ },
+ {
+  "jp": "しおん",
+  "cn": "依神紫苑",
+  "voice": "女性２",
+  "pitch": 140,
+  "speed": "60~80",
+  "img": null
  },
  {
   "jp": "しゃめいまる",
   "cn": "射命丸文",
-  "voice": "女性２",
-  "pitch": 125,
-  "speed": 100,
-  "img": "img/char17.png"
+  "voice": "中性",
+  "pitch": 138,
+  "speed": 75,
+  "img": "img/char33.png"
+ },
+ {
+  "jp": "じょおん",
+  "cn": "依神女苑",
+  "voice": "女性１",
+  "pitch": 150,
+  "speed": 80,
+  "img": null
+ },
+ {
+  "jp": "しんき",
+  "cn": "神绮",
+  "voice": "",
+  "pitch": 130,
+  "speed": 60,
+  "img": null
+ },
+ {
+  "jp": "せいじゃ",
+  "cn": "鬼人正邪",
+  "voice": "女性１",
+  "pitch": 115,
+  "speed": 115,
+  "img": "img/char36.png"
+ },
+ {
+  "jp": "せんだい",
+  "cn": "先代巫女",
+  "voice": "女性１",
+  "pitch": 115,
+  "speed": 130,
+  "img": null
  },
  {
   "jp": "すいか",
@@ -141,7 +301,15 @@
   "voice": "中性",
   "pitch": 150,
   "speed": 100,
-  "img": "img/char18.png"
+  "img": "img/char38.png"
+ },
+ {
+  "jp": "すたーさふぁいあ",
+  "cn": "斯塔萨菲雅",
+  "voice": "女性２",
+  "pitch": 150,
+  "speed": 60,
+  "img": "img/char39.png"
  },
  {
   "jp": "すわこ",
@@ -149,7 +317,31 @@
   "voice": "女性１",
   "pitch": 175,
   "speed": 80,
-  "img": "img/char19.png"
+  "img": "img/char40.png"
+ },
+ {
+  "jp": "だいようせい",
+  "cn": "大妖精",
+  "voice": "女性１",
+  "pitch": 140,
+  "speed": 85,
+  "img": "img/char41.png"
+ },
+ {
+  "jp": "たかね",
+  "cn": "山城高岭",
+  "voice": "女性２",
+  "pitch": 150,
+  "speed": 90,
+  "img": null
+ },
+ {
+  "jp": "ちぇん",
+  "cn": "橙",
+  "voice": "女性１",
+  "pitch": 124,
+  "speed": 73,
+  "img": "img/char43.png"
  },
  {
   "jp": "ちるの",
@@ -157,7 +349,7 @@
   "voice": "女性２",
   "pitch": 120,
   "speed": 115,
-  "img": "img/char20.png"
+  "img": "img/char44.png"
  },
  {
   "jp": "てゐ",
@@ -165,7 +357,15 @@
   "voice": "中性",
   "pitch": 120,
   "speed": 110,
-  "img": "img/char21.png"
+  "img": "img/char45.png"
+ },
+ {
+  "jp": "てんきゅう",
+  "cn": "天弓千亦",
+  "voice": "女性１",
+  "pitch": 140,
+  "speed": 85,
+  "img": null
  },
  {
   "jp": "てんこ",
@@ -173,7 +373,7 @@
   "voice": "女性２",
   "pitch": 134,
   "speed": 75,
-  "img": "img/char22.png"
+  "img": "img/char47.png"
  },
  {
   "jp": "とらまる",
@@ -181,7 +381,7 @@
   "voice": "女性２",
   "pitch": 110,
   "speed": 120,
-  "img": "img/char23.png"
+  "img": "img/char48.png"
  },
  {
   "jp": "なずーりん",
@@ -189,7 +389,7 @@
   "voice": "女性１",
   "pitch": 115,
   "speed": 90,
-  "img": "img/char24.png"
+  "img": "img/char49.png"
  },
  {
   "jp": "にとり",
@@ -197,7 +397,7 @@
   "voice": "機械１",
   "pitch": 105,
   "speed": 105,
-  "img": "img/char25.png"
+  "img": "img/char50.png"
  },
  {
   "jp": "ぬえ",
@@ -205,7 +405,7 @@
   "voice": "女性２",
   "pitch": 180,
   "speed": 100,
-  "img": "img/char26.png"
+  "img": "img/char51.png"
  },
  {
   "jp": "はたて",
@@ -213,7 +413,7 @@
   "voice": "女性２",
   "pitch": 121,
   "speed": 84,
-  "img": "img/char27.png"
+  "img": "img/char52.png"
  },
  {
   "jp": "ぱちゅりー",
@@ -221,7 +421,7 @@
   "voice": "女性２",
   "pitch": 115,
   "speed": 120,
-  "img": "img/char28.png"
+  "img": "img/char53.png"
  },
  {
   "jp": "ぱるすぃ",
@@ -229,7 +429,7 @@
   "voice": "女性２",
   "pitch": 130,
   "speed": 80,
-  "img": "img/char29.png"
+  "img": "img/char54.png"
  },
  {
   "jp": "ひじり",
@@ -237,15 +437,31 @@
   "voice": "中性",
   "pitch": 97,
   "speed": 102,
-  "img": "img/char30.png"
+  "img": "img/char55.png"
+ },
+ {
+  "jp": "ひめむし",
+  "cn": "姬虫百百世",
+  "voice": "中性",
+  "pitch": 160,
+  "speed": 80,
+  "img": null
  },
  {
   "jp": "ふらん",
   "cn": "芙兰朵露·斯卡蕾特",
-  "voice": "機械１",
-  "pitch": 100,
-  "speed": 100,
-  "img": "img/char31.png"
+  "voice": "女性１",
+  "pitch": "170~180",
+  "speed": "70~80",
+  "img": "img/char57.png"
+ },
+ {
+  "jp": "まみぞう",
+  "cn": "二岩猯藏",
+  "voice": "中性",
+  "pitch": 112,
+  "speed": 93,
+  "img": "img/char58.png"
  },
  {
   "jp": "まりさ",
@@ -253,7 +469,23 @@
   "voice": "女性２",
   "pitch": 100,
   "speed": 100,
-  "img": "img/char32.png"
+  "img": "img/char59.png"
+ },
+ {
+  "jp": "まゆみ",
+  "cn": "杖刀偶磨弓",
+  "voice": "機械１",
+  "pitch": 160,
+  "speed": 80,
+  "img": null
+ },
+ {
+  "jp": "みけ",
+  "cn": "豪德寺三花",
+  "voice": "女性１",
+  "pitch": 180,
+  "speed": 80,
+  "img": null
  },
  {
   "jp": "みすちー",
@@ -261,7 +493,7 @@
   "voice": "女性１",
   "pitch": 105,
   "speed": 100,
-  "img": "img/char33.png"
+  "img": "img/char62.png"
  },
  {
   "jp": "みすちー２",
@@ -269,7 +501,31 @@
   "voice": "女性１",
   "pitch": 105,
   "speed": 100,
-  "img": "img/char34.png"
+  "img": "img/char63.png"
+ },
+ {
+  "jp": "みすまる",
+  "cn": "玉造魅须丸",
+  "voice": "機械１",
+  "pitch": 150,
+  "speed": 90,
+  "img": null
+ },
+ {
+  "jp": "みま",
+  "cn": "魅魔",
+  "voice": "女性２",
+  "pitch": 125,
+  "speed": 90,
+  "img": null
+ },
+ {
+  "jp": "めーりん",
+  "cn": "红美铃",
+  "voice": "中性",
+  "pitch": 160,
+  "speed": 70,
+  "img": "img/char66.png"
  },
  {
   "jp": "もこう",
@@ -277,7 +533,7 @@
   "voice": "女性２",
   "pitch": 120,
   "speed": 100,
-  "img": "img/char35.png"
+  "img": "img/char67.png"
  },
  {
   "jp": "もみじ",
@@ -285,7 +541,15 @@
   "voice": "女性１",
   "pitch": 110,
   "speed": 120,
-  "img": "img/char36.png"
+  "img": "img/char68.png"
+ },
+ {
+  "jp": "やちえ",
+  "cn": "吉吊八千慧",
+  "voice": "中性",
+  "pitch": 120,
+  "speed": 115,
+  "img": null
  },
  {
   "jp": "やまめ",
@@ -293,15 +557,55 @@
   "voice": "女性２",
   "pitch": 115,
   "speed": 110,
-  "img": "img/char37.png"
+  "img": "img/char70.png"
+ },
+ {
+  "jp": "ゆうか",
+  "cn": "风见幽香",
+  "voice": "中性",
+  "pitch": 140,
+  "speed": 80,
+  "img": "img/char71.png"
+ },
+ {
+  "jp": "ゆかり",
+  "cn": "八云紫",
+  "voice": "女性１",
+  "pitch": 120,
+  "speed": 90,
+  "img": "img/char72.png"
+ },
+ {
+  "jp": "ゆめみ",
+  "cn": "冈崎梦美",
+  "voice": "",
+  "pitch": 80,
+  "speed": 130,
+  "img": null
+ },
+ {
+  "jp": "ゆゆこ",
+  "cn": "西行寺幽幽子",
+  "voice": "女性１",
+  "pitch": 150,
+  "speed": 60,
+  "img": "img/char74.png"
  },
  {
   "jp": "ようむ",
   "cn": "魂魄妖梦",
+  "voice": "女性１",
+  "pitch": 140,
+  "speed": 76,
+  "img": "img/char75.png"
+ },
+ {
+  "jp": "らん",
+  "cn": "八云蓝",
   "voice": "女性２",
-  "pitch": 120,
-  "speed": 115,
-  "img": "img/char38.png"
+  "pitch": 90,
+  "speed": 120,
+  "img": "img/char76.png"
  },
  {
   "jp": "りぐる",
@@ -309,7 +613,7 @@
   "voice": "男性１",
   "pitch": 140,
   "speed": 110,
-  "img": "img/char39.png"
+  "img": "img/char77.png"
  },
  {
   "jp": "りりーほわいと",
@@ -317,7 +621,7 @@
   "voice": "女性１",
   "pitch": 115,
   "speed": 110,
-  "img": "img/char40.png"
+  "img": "img/char78.png"
  },
  {
   "jp": "りりか",
@@ -325,15 +629,31 @@
   "voice": "女性１",
   "pitch": 135,
   "speed": 95,
-  "img": "img/char41.png"
+  "img": "img/char79.png"
  },
  {
   "jp": "るなちゃいるど",
   "cn": "露娜切露德",
-  "voice": "女性２",
-  "pitch": 125,
-  "speed": 120,
-  "img": "img/char42.png"
+  "voice": "機械１",
+  "pitch": 170,
+  "speed": 70,
+  "img": "img/char80.png"
+ },
+ {
+  "jp": "るーみあ",
+  "cn": "露米娅",
+  "voice": "女性１",
+  "pitch": 140,
+  "speed": 60,
+  "img": "img/char81.png"
+ },
+ {
+  "jp": "れいむ",
+  "cn": "博丽灵梦",
+  "voice": "女性１",
+  "pitch": 100,
+  "speed": 100,
+  "img": "img/char82.png"
  },
  {
   "jp": "れみりあ",
@@ -341,6 +661,6 @@
   "voice": "女性１",
   "pitch": 150,
   "speed": 80,
-  "img": "img/char43.png"
+  "img": "img/char83.png"
  }
 ]

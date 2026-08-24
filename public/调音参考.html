@@ -62,6 +62,7 @@
   .v-中性   { background: #8f7dc4; }
   .v-男性１ { background: #5a8fd6; }
   .v-機械１ { background: #7d9aa8; }
+  .v-未指定 { background: #b0b8c4; }
   .empty { max-width: 980px; margin: 30px auto; color: #999; text-align: center; padding: 40px 0; }
   @media (max-width: 560px) {
     .controls input[type=text] { width: 100%; }
@@ -83,7 +84,7 @@
 <div id="content"></div>
 
 <script>
-const GROUP_ORDER = ["女性１","女性２","中性","男性１","機械１"];
+const GROUP_ORDER = ["女性１","女性２","中性","男性１","機械１","未指定"];
 
 let VOICES_ORDER, mode = "group";
 
@@ -92,7 +93,8 @@ async function load(){
   return await res.json();
 }
 
-function vclass(v){ return "v-" + v; }
+function vclass(v){ return "v-" + (v || "未指定"); }
+function vlabel(v){ return v || "未指定"; }
 function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 
 function card(d){
@@ -104,7 +106,7 @@ function card(d){
     <div class="info">
       <div class="cn">${esc(d.cn)}</div>
       <div class="jp">${esc(d.jp)}</div>
-      <div class="voice ${vclass(d.voice)}">${esc(d.voice)}</div>
+      <div class="voice ${vclass(d.voice)}">${esc(vlabel(d.voice))}</div>
       <div class="meta" style="margin-top:6px">
         <span>音程 <b>${d.pitch}</b></span>
         <span>速度 <b>${d.speed}</b></span>
@@ -122,12 +124,12 @@ function render(data, q){
   if (!rows.length) { box.innerHTML = `<div class="empty">没有匹配的角色</div>`; return; }
   if (mode === "group") {
     for (const g of GROUP_ORDER) {
-      const grp = rows.filter(d => d.voice === g);
+      const grp = rows.filter(d => (d.voice || "未指定") === g);
       if (!grp.length) continue;
       html += `<div class="group-title">${esc(g)} <span class="cnt">${grp.length}</span></div>`;
       html += `<div class="grid">` + grp.map(card).join("") + `</div>`;
     }
-    const rest = rows.filter(d => !GROUP_ORDER.includes(d.voice));
+    const rest = rows.filter(d => !GROUP_ORDER.includes(d.voice || "未指定"));
     if (rest.length) {
       html += `<div class="group-title">其它 <span class="cnt">${rest.length}</span></div>`;
       html += `<div class="grid">` + rest.map(card).join("") + `</div>`;
