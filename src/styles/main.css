@@ -394,3 +394,46 @@ small { font-size: 85%; }
 /* ============ 通用 ============ */
 label { user-select: none; font-weight: normal; }
 .psdtool-hidden { /* checkbox 未选层 */ }
+
+/* ============ 最近打开文件 ============ */
+.psdtool-recent-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.psdtool-recent-item {
+  display: flex;
+  align-items: center;
+  padding: 4px 6px;
+  border-bottom: 1px solid #eee;
+  gap: 8px;
+}
+.psdtool-recent-item:last-child { border-bottom: none; }
+.psdtool-recent-item > a {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #337ab7;
+  text-decoration: none;
+}
+.psdtool-recent-item > a:hover { color: #23527c; text-decoration: underline; }
+.psdtool-recent-nohandle { color: #999 !important; font-style: italic; }
+.psdtool-recent-meta {
+  flex: 0 0 auto;
+  font-size: 0.85em;
+  color: #999;
+  white-space: nowrap;
+}
+.psdtool-recent-remove {
+  flex: 0 0 auto;
+  border: none;
+  background: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 1.2em;
+  line-height: 1;
+  padding: 0 4px;
+}
+.psdtool-recent-remove:hover { color: #d9534f; }

@@ -1,4 +1,10 @@
 import { t, getLang, setLang, allLangs, type Lang } from '../i18n';
+import {
+  saveRecent,
+  getHandleFromDrop,
+  createRecentFilesPanel,
+} from './recent-files';
+import { storePendingFile } from './pending-file';
 
 export interface FileOpenResult {
   file: File;
@@ -97,17 +103,20 @@ export function createFileOpenUI(onOpen: (r: FileOpenResult) => void): HTMLEleme
   body.appendChild(dropzone);
   panel.appendChild(body);
   panelCol.appendChild(panel);
-  panelRow.appendChild(panelCol);
-  container.appendChild(panelRow);
 
-  const open = (file: File): void => {
+  const open = async (file: File): Promise<void> => {
     if (!file) return;
-    onOpen({ file, autoTrim: autoTrim.checked });
+    await storePendingFile(file, autoTrim.checked);
+    window.open(location.href);
   };
 
-  fileInput.addEventListener('change', (e) => {
+  fileInput.addEventListener('change', async (e) => {
     const f = (e.target as HTMLInputElement).files?.[0];
-    if (f) open(f);
+    if (f) {
+      saveRecent(f, null);
+      await open(f);
+      recentPanel.refresh();
+    }
   });
 
   ['dragenter', 'dragover'].forEach((ev) => {
@@ -116,12 +125,26 @@ export function createFileOpenUI(onOpen: (r: FileOpenResult) => void): HTMLEleme
       dropzone.classList.add('psdtool-drop-active');
     });
   });
-  dropzone.addEventListener('drop', (e) => {
+  dropzone.addEventListener('drop', async (e) => {
     e.preventDefault();
     dropzone.classList.remove('psdtool-drop-active');
     const f = e.dataTransfer?.files?.[0];
-    if (f) open(f);
+    if (f) {
+      const handle = await getHandleFromDrop(e);
+      saveRecent(f, handle);
+      await open(f);
+      recentPanel.refresh();
+    }
   });
+
+  // 最近打开面板
+  const recentPanel = createRecentFilesPanel((file) => {
+    void open(file);
+  });
+  panelCol.appendChild(recentPanel.container);
+
+  panelRow.appendChild(panelCol);
+  container.appendChild(panelRow);
 
   return container;
 }
