@@ -4,6 +4,7 @@ import { Renderer, FlipType as RFlipType } from './renderer';
 import { LayerTree, FlipType as LFlipType } from './layertree';
 import { createFileOpenUI } from './ui/file-open';
 import { createMainView, MainViewElements } from './ui/main-view';
+import { loadPendingFile, clearPendingFile } from './ui/pending-file';
 import { t } from './i18n';
 
 class App {
@@ -12,8 +13,15 @@ class App {
   private view!: MainViewElements;
   private autoTrim = false;
   private redrawTimer: number | null = null;
+  private currentFileName = '';
 
-  start(): void {
+  async start(): Promise<void> {
+    const pending = await loadPendingFile();
+    if (pending) {
+      await clearPendingFile();
+      await this.loadFile(pending.file, pending.autoTrim);
+      return;
+    }
     const app = document.getElementById('app');
     if (!app) throw new Error('#app not found');
     app.innerHTML = '';
@@ -22,6 +30,7 @@ class App {
 
   private async loadFile(file: File, autoTrim: boolean): Promise<void> {
     this.autoTrim = autoTrim;
+    this.currentFileName = file.name;
     const buf = await file.arrayBuffer();
     let psd;
     try {
@@ -35,6 +44,9 @@ class App {
     this.view = createMainView();
     // 保存文件名前缀：用 PSD 文件名（去扩展名）+ 下划线
     this.view.seqDlPrefix.value = file.name.replace(/\.[^.]+$/, '') + '_';
+    // 恢复该文件的序号
+    const savedNum = localStorage.getItem('psdtool-seqnum:' + file.name);
+    this.view.seqDlNum.value = savedNum ?? '0';
     this.layerRoot = new LayerTree(false, this.view.layerTreeEl, root);
 
     // 关联 renderer Node 的 visible 状态到 layertree Node 的 checked
@@ -152,6 +164,7 @@ class App {
     if (isNaN(num) || num < 0) num = 0;
     this.download(prefix + ('0000' + num).slice(-4) + '.png');
     this.view.seqDlNum.value = (num + 1).toString();
+    localStorage.setItem('psdtool-seqnum:' + this.currentFileName, this.view.seqDlNum.value);
   }
 
   private download(filename: string): void {
