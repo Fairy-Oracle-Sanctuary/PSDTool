@@ -12,6 +12,15 @@ export interface MainViewElements {
   seqDlPrefix: HTMLInputElement;
   seqDlNum: HTMLInputElement;
   seqDl: HTMLButtonElement;
+  saveDirBtn: HTMLButtonElement;
+  drawerBtn: HTMLButtonElement;
+  drawerContent: HTMLElement;
+  outlineEnabled: HTMLInputElement;
+  outlineColor: HTMLInputElement;
+  outlineWidth: HTMLInputElement;
+  outlineSmooth: HTMLInputElement;
+  fillEnabled: HTMLInputElement;
+  fillColor: HTMLInputElement;
 }
 
 function el(tag: string, cls?: string): HTMLElement {
@@ -157,9 +166,16 @@ export function createMainView(): MainViewElements {
   seqDl.className = 'btn btn-primary';
   seqDl.textContent = t('savePng');
   seqDl.title = t('saveTitle');
+  const saveDirBtn = document.createElement('button') as HTMLButtonElement;
+  saveDirBtn.id = 'save-dir-btn';
+  saveDirBtn.className = 'btn btn-default';
+  saveDirBtn.textContent = '\u{1F4C2}';
+  saveDirBtn.title = '选择保存路径';
+  saveDirBtn.style.display = 'none';
   saveWrap.appendChild(seqDlPrefix);
   saveWrap.appendChild(seqDlNum);
   saveWrap.appendChild(seqDl);
+  saveWrap.appendChild(saveDirBtn);
   form.appendChild(saveWrap);
 
   miscUi.appendChild(form);
@@ -180,6 +196,179 @@ export function createMainView(): MainViewElements {
   root.appendChild(splitter);
   root.appendChild(mainContainer);
 
+  // ---- 右侧抽屉 ----
+  const drawer = el('div', 'psdtool-drawer') as HTMLElement;
+  drawer.id = 'right-drawer';
+  const drawerToggle = document.createElement('button') as HTMLButtonElement;
+  drawerToggle.id = 'drawer-toggle';
+  drawerToggle.className = 'btn btn-default btn-sm';
+  drawerToggle.textContent = '\u2630';
+  drawerToggle.title = '功能面板';
+
+  const drawerContent = el('div', 'psdtool-drawer-content') as HTMLElement;
+
+  // 描边功能
+  const outlineSection = el('div', 'psdtool-drawer-section') as HTMLElement;
+  const outlineTitle = el('div', 'psdtool-drawer-section-title') as HTMLElement;
+  outlineTitle.textContent = '人物描边';
+  outlineSection.appendChild(outlineTitle);
+
+  const outlineRow = el('div', 'psdtool-drawer-row') as HTMLElement;
+  const outlineEnabled = document.createElement('input') as HTMLInputElement;
+  outlineEnabled.type = 'checkbox';
+  outlineEnabled.id = 'outline-enabled';
+  const outlineLabel = el('label') as HTMLLabelElement;
+  outlineLabel.htmlFor = 'outline-enabled';
+  outlineLabel.textContent = ' 启用描边';
+  outlineRow.appendChild(outlineEnabled);
+  outlineRow.appendChild(outlineLabel);
+  outlineSection.appendChild(outlineRow);
+
+  const colorRow = el('div', 'psdtool-drawer-row') as HTMLElement;
+  const colorLabel = el('span', 'psdtool-drawer-label') as HTMLElement;
+  colorLabel.textContent = '颜色';
+  const outlineColor = document.createElement('input') as HTMLInputElement;
+  outlineColor.type = 'color';
+  outlineColor.id = 'outline-color';
+  outlineColor.className = 'psdtool-color-input';
+  outlineColor.value = '#000000';
+  colorRow.appendChild(colorLabel);
+  colorRow.appendChild(outlineColor);
+  outlineSection.appendChild(colorRow);
+
+  const SWATCH_COLORS = ['#00ff00','#ff0000','#0000ff','#00ffff','#ff00ff','#ffff00','#000000','#808080','#ffffff'];
+  const outlineSwatchRow = el('div', 'psdtool-swatch-row') as HTMLElement;
+  for (const c of SWATCH_COLORS) {
+    const sw = document.createElement('button') as HTMLButtonElement;
+    sw.className = 'psdtool-swatch';
+    sw.style.backgroundColor = c;
+    sw.title = c;
+    sw.addEventListener('click', (e) => {
+      e.preventDefault();
+      outlineColor.value = c;
+      outlineColor.dispatchEvent(new Event('input'));
+    });
+    outlineSwatchRow.appendChild(sw);
+  }
+  outlineSection.appendChild(outlineSwatchRow);
+
+  const widthRow = el('div', 'psdtool-drawer-row') as HTMLElement;
+  const widthLabel = el('span', 'psdtool-drawer-label') as HTMLElement;
+  widthLabel.textContent = '粗细';
+  const outlineWidth = document.createElement('input') as HTMLInputElement;
+  outlineWidth.type = 'range';
+  outlineWidth.id = 'outline-width';
+  outlineWidth.className = 'psdtool-range-input';
+  outlineWidth.min = '1';
+  outlineWidth.max = '20';
+  outlineWidth.step = '1';
+  outlineWidth.value = '3';
+  const widthValue = el('span', 'psdtool-drawer-value') as HTMLElement;
+  widthValue.textContent = '3';
+  outlineWidth.addEventListener('input', () => { widthValue.textContent = outlineWidth.value; });
+  widthRow.appendChild(widthLabel);
+  widthRow.appendChild(outlineWidth);
+  widthRow.appendChild(widthValue);
+  outlineSection.appendChild(widthRow);
+
+  const smoothRow = el('div', 'psdtool-drawer-row') as HTMLElement;
+  const outlineSmooth = document.createElement('input') as HTMLInputElement;
+  outlineSmooth.type = 'checkbox';
+  outlineSmooth.id = 'outline-smooth';
+  outlineSmooth.disabled = true;
+  const smoothLabel = el('label') as HTMLLabelElement;
+  smoothLabel.htmlFor = 'outline-smooth';
+  smoothLabel.textContent = ' 平滑描边';
+  smoothLabel.style.opacity = '0.5';
+  smoothRow.appendChild(outlineSmooth);
+  smoothRow.appendChild(smoothLabel);
+  outlineSection.appendChild(smoothRow);
+
+  // 描边开关 → 启用/禁用子控件
+  const updateOutlineControls = () => {
+    const enabled = outlineEnabled.checked;
+    outlineColor.disabled = !enabled;
+    outlineWidth.disabled = !enabled;
+    outlineSmooth.disabled = !enabled;
+    smoothLabel.style.opacity = enabled ? '1' : '0.5';
+    colorLabel.style.opacity = enabled ? '1' : '0.5';
+    widthLabel.style.opacity = enabled ? '1' : '0.5';
+    outlineSwatchRow.style.opacity = enabled ? '1' : '0.5';
+    outlineSwatchRow.querySelectorAll('button').forEach(b => (b as HTMLButtonElement).disabled = !enabled);
+  };
+  outlineEnabled.addEventListener('change', updateOutlineControls);
+  updateOutlineControls();
+
+  drawerContent.appendChild(outlineSection);
+
+  // 填充纯色功能
+  const fillSection = el('div', 'psdtool-drawer-section') as HTMLElement;
+  const fillTitle = el('div', 'psdtool-drawer-section-title') as HTMLElement;
+  fillTitle.textContent = '人物填充';
+  fillSection.appendChild(fillTitle);
+
+  const fillRow = el('div', 'psdtool-drawer-row') as HTMLElement;
+  const fillEnabled = document.createElement('input') as HTMLInputElement;
+  fillEnabled.type = 'checkbox';
+  fillEnabled.id = 'fill-enabled';
+  const fillLabel = el('label') as HTMLLabelElement;
+  fillLabel.htmlFor = 'fill-enabled';
+  fillLabel.textContent = ' 填充纯色';
+  fillRow.appendChild(fillEnabled);
+  fillRow.appendChild(fillLabel);
+  fillSection.appendChild(fillRow);
+
+  const fillColorRow = el('div', 'psdtool-drawer-row') as HTMLElement;
+  const fillColorLabel = el('span', 'psdtool-drawer-label') as HTMLElement;
+  fillColorLabel.textContent = '颜色';
+  fillColorLabel.style.opacity = '0.5';
+  const fillColor = document.createElement('input') as HTMLInputElement;
+  fillColor.type = 'color';
+  fillColor.id = 'fill-color';
+  fillColor.className = 'psdtool-color-input';
+  fillColor.value = '#ffffff';
+  fillColor.disabled = true;
+  fillColorRow.appendChild(fillColorLabel);
+  fillColorRow.appendChild(fillColor);
+  fillSection.appendChild(fillColorRow);
+
+  const fillSwatchRow = el('div', 'psdtool-swatch-row') as HTMLElement;
+  fillSwatchRow.style.opacity = '0.5';
+  for (const c of SWATCH_COLORS) {
+    const sw = document.createElement('button') as HTMLButtonElement;
+    sw.className = 'psdtool-swatch';
+    sw.style.backgroundColor = c;
+    sw.title = c;
+    sw.disabled = true;
+    sw.addEventListener('click', (e) => {
+      e.preventDefault();
+      fillColor.value = c;
+      fillColor.dispatchEvent(new Event('input'));
+    });
+    fillSwatchRow.appendChild(sw);
+  }
+  fillSection.appendChild(fillSwatchRow);
+
+  const updateFillControls = () => {
+    const en = fillEnabled.checked;
+    fillColor.disabled = !en;
+    fillColorLabel.style.opacity = en ? '1' : '0.5';
+    fillSwatchRow.style.opacity = en ? '1' : '0.5';
+    fillSwatchRow.querySelectorAll('button').forEach(b => (b as HTMLButtonElement).disabled = !en);
+  };
+  fillEnabled.addEventListener('change', updateFillControls);
+  updateFillControls();
+
+  drawerContent.appendChild(fillSection);
+  drawer.appendChild(drawerContent);
+  drawer.appendChild(drawerToggle);
+
+  drawerToggle.addEventListener('click', () => {
+    drawer.classList.toggle('psdtool-drawer-open');
+  });
+
+  root.appendChild(drawer);
+
   return {
     root,
     layerTreeEl,
@@ -192,5 +381,14 @@ export function createMainView(): MainViewElements {
     seqDlPrefix,
     seqDlNum,
     seqDl,
+    saveDirBtn,
+    drawerBtn: drawerToggle,
+    drawerContent,
+    outlineEnabled,
+    outlineColor,
+    outlineWidth,
+    outlineSmooth,
+    fillEnabled,
+    fillColor,
   };
 }
