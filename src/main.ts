@@ -1,5 +1,6 @@
 import { readPsd } from 'ag-psd';
 import { adaptPsd } from './psd-adapter';
+import type { Root, Layer } from './types';
 import { Renderer, FlipType as RFlipType } from './renderer';
 import { LayerTree, FlipType as LFlipType } from './layertree';
 import { createFileOpenUI } from './ui/file-open';
@@ -33,15 +34,22 @@ class App {
   private async loadFile(file: File, autoTrim: boolean): Promise<void> {
     this.autoTrim = autoTrim;
     this.currentFileName = file.name;
-    const buf = await file.arrayBuffer();
-    let psd;
-    try {
-      psd = readPsd(buf);
-    } catch (e) {
-      alert(t('loadFailed') + e);
-      return;
+    const isPng = /\.png$/i.test(file.name) || file.type === 'image/png';
+    let root: Root | null;
+    if (isPng) {
+      root = await this.loadPngRoot(file);
+    } else {
+      const buf = await file.arrayBuffer();
+      let psd;
+      try {
+        psd = readPsd(buf);
+      } catch (e) {
+        alert(t('loadFailed') + e);
+        return;
+      }
+      root = adaptPsd(psd);
     }
-    const root = adaptPsd(psd);
+    if (!root) return;
     this.renderer = new Renderer(root);
     this.view = createMainView();
     // 保存文件名前缀：用 PSD 文件名（去扩展名）+ 下划线
@@ -112,6 +120,59 @@ class App {
     app.appendChild(this.view.root);
 
     this.redraw();
+  }
+
+  private async loadPngRoot(file: File): Promise<Root | null> {
+    let bitmap: ImageBitmap;
+    try {
+      bitmap = await createImageBitmap(file);
+    } catch (e) {
+      alert(t('loadFailed') + e);
+      return null;
+    }
+    const c = document.createElement('canvas');
+    c.width = bitmap.width;
+    c.height = bitmap.height;
+    const ctx = c.getContext('2d');
+    if (!ctx) return null;
+    ctx.drawImage(bitmap, 0, 0);
+    bitmap.close();
+    const layer: Layer = {
+      SeqID: 0,
+      Name: file.name,
+      X: 0,
+      Y: 0,
+      Width: c.width,
+      Height: c.height,
+      Children: [],
+      Folder: false,
+      FolderOpen: false,
+      Visible: true,
+      BlendMode: 'normal',
+      Opacity: 255,
+      Clipping: false,
+      BlendClippedElements: false,
+      Canvas: ctx,
+      MaskX: 0,
+      MaskY: 0,
+      MaskWidth: 0,
+      MaskHeight: 0,
+      MaskDefaultColor: 0,
+      Mask: undefined,
+    };
+    return {
+      CanvasWidth: c.width,
+      CanvasHeight: c.height,
+      X: 0,
+      Y: 0,
+      Width: c.width,
+      Height: c.height,
+      Children: [layer],
+      Hash: '',
+      PFV: '',
+      PFVModDate: 0,
+      Readme: '',
+    };
   }
 
   private scheduleRedraw(): void {

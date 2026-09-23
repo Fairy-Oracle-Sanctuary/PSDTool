@@ -71,7 +71,7 @@ export function createFileOpenUI(onOpen: (r: FileOpenResult) => void): HTMLEleme
 
   const fileInput = document.createElement('input');
   fileInput.type = 'file';
-  fileInput.accept = '.psd';
+  fileInput.accept = '.psd,.png';
   const p1 = document.createElement('p');
   p1.appendChild(fileInput);
   dropzone.appendChild(p1);

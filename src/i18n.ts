@@ -4,7 +4,7 @@ const translations: Record<Lang, Record<string, string>> = {
   en: {
     appTitle: 'PSDTool',
     openFile: 'Open a File',
-    dropHint: 'You can also drag & drop a PSD file here.',
+    dropHint: 'You can also drag & drop a PSD or PNG file here.',
     options: 'Options',
     autoTrim: 'Auto Trim',
     layers: 'Layers',
@@ -23,7 +23,7 @@ const translations: Record<Lang, Record<string, string>> = {
   ja: {
     appTitle: 'PSDTool',
     openFile: 'ファイルを選択して開く',
-    dropHint: 'ここに PSD ファイルをドラッグ＆ドロップしても読み込めます。',
+    dropHint: 'ここに PSD / PNG ファイルをドラッグ＆ドロップしても読み込めます。',
     options: 'オプション',
     autoTrim: '自動トリミング',
     layers: 'レイヤー',
@@ -42,7 +42,7 @@ const translations: Record<Lang, Record<string, string>> = {
   zh: {
     appTitle: 'PSDTool',
     openFile: '选择文件打开',
-    dropHint: '也可以将 PSD 文件拖放到此处加载。',
+    dropHint: '也可以将 PSD / PNG 文件拖放到此处加载。',
     options: '选项',
     autoTrim: '自动裁剪',
     layers: '图层',
